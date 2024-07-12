@@ -8,14 +8,11 @@ function getComputerChoice() {
     case 2:
       return "scissors";
   }
-
-  function getHumanChoice() {
-    let input = prompt("Enter rock, paper or scissors");
-    return input.toLowerCase();
-  }
 }
-let playerScore = 0;
-let computerScore = 0;
+function getHumanChoice() {
+  let input = prompt("Enter rock, paper or scissors");
+  return input.toLowerCase();
+}
 
 function playRound(computerChoice, humanChoice) {
   if (
@@ -23,17 +20,36 @@ function playRound(computerChoice, humanChoice) {
     (humanChoice === "scissors" && computerChoice === "paper") ||
     (humanChoice === "paper" && computerChoice === "rock")
   ) {
-    alert("You Win");
-    playerScore++;
+    return 1;
   } else if (computerChoice === humanChoice) {
-    alert("Draw!");
+    return 0;
   } else {
-    alert("You lose!");
-    computerScore++;
+    return 2;
   }
-  alert(`Your score: ${playerScore}, computer's score: ${computerScore}`)
 }
+function playGame() {
+  let playerScore = 0;
+  let computerScore = 0;
+  for (let i = 0; i < 5; i++) {
+    let computerChoice = getComputerChoice();
+    let humanChoice = getHumanChoice();
+    let outcome = playRound(computerChoice, humanChoice);
+    if (outcome === 1) {
+      playerScore++;
+    } else if (outcome === 2) {
+      computerScore++;
+    }
+    alert(`Your score: ${playerScore}, computer's score: ${computerScore}`);
+  }
+  let winner;
+  if (playerScore > computerScore) {
+    winner = "You";
+  } else if (playerScore === computerScore) {
+    winner = "No one (draw!)";
+  } else {
+    winner = "Computer";
+  }
 
-for (let i = 0; i < 5; i++) {
-  playRound(getComputerChoice(), getHumanChoice())
+  alert(`Game over. Winner: ${winner}`);
 }
+playGame();
