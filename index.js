@@ -8,6 +8,10 @@ function getComputerChoice() {
     case 2:
       return "scissors";
   }
+
+  function getHumanChoice(){
+    let input = prompt("Enter rock, paper or scissors");
+    return input.toLowerCase();
+  }
 }
 
-alert(getComputerChoice())
