@@ -1,8 +1,8 @@
 let playerScore = 0;
 let computerScore = 0;
 const label = document.querySelector("h3");
-const playerScoreLabel = document.querySelector(".player-score");
-const computerScoreLabel = document.querySelector(".computer-score");
+const playerScoreLabel = document.querySelector("#player-score");
+const computerScoreLabel = document.querySelector("#computer-score");
 
 function getComputerChoice() {
   let random = Math.floor(Math.random() * 3);
