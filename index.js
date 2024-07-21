@@ -1,6 +1,8 @@
 let playerScore = 0;
 let computerScore = 0;
 const label = document.querySelector("h3");
+const playerScoreLabel = document.querySelector(".player-score");
+const computerScoreLabel = document.querySelector(".computer-score");
 
 function getComputerChoice() {
   let random = Math.floor(Math.random() * 3);
@@ -50,4 +52,6 @@ function playGame(humanChoice) {
   }
 
   label.textContent = `You chose ${humanChoice}, the computer chose ${computerChoice}. ${result}`;
+  playerScoreLabel.textContent = `Player score: ${playerScore}`
+  computerScoreLabel.textContent = `Computer score: ${computerScore}`
 }
