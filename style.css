@@ -1,0 +1,18 @@
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+button {
+    font-size: large;
+
+}
+h3{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 3rem;
+}
