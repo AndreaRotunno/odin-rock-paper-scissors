@@ -1,3 +1,7 @@
+let playerScore = 0;
+let computerScore = 0;
+const label = document.querySelector("h3");
+
 function getComputerChoice() {
   let random = Math.floor(Math.random() * 3);
   switch (random) {
@@ -9,10 +13,13 @@ function getComputerChoice() {
       return "scissors";
   }
 }
-function getHumanChoice() {
-  let input = prompt("Enter rock, paper or scissors");
-  return input.toLowerCase();
-}
+
+document.querySelectorAll(".btn").forEach((btn) =>
+  btn.addEventListener("click", function (e) {
+    playGame(e.target.id);
+    console.log(e.target.id);
+  })
+);
 
 function playRound(computerChoice, humanChoice) {
   if (
@@ -27,29 +34,20 @@ function playRound(computerChoice, humanChoice) {
     return 2;
   }
 }
-function playGame() {
-  let playerScore = 0;
-  let computerScore = 0;
-  for (let i = 0; i < 5; i++) {
-    let computerChoice = getComputerChoice();
-    let humanChoice = getHumanChoice();
-    let outcome = playRound(computerChoice, humanChoice);
-    if (outcome === 1) {
-      playerScore++;
-    } else if (outcome === 2) {
-      computerScore++;
-    }
-    alert(`Your score: ${playerScore}, computer's score: ${computerScore}`);
-  }
-  let winner;
-  if (playerScore > computerScore) {
-    winner = "You";
-  } else if (playerScore === computerScore) {
-    winner = "No one (draw!)";
+
+function playGame(humanChoice) {
+  let computerChoice = getComputerChoice();
+  let outcome = playRound(computerChoice, humanChoice);
+  let result;
+  if (outcome === 1) {
+    playerScore++;
+    result = "You win!";
+  } else if (outcome === 2) {
+    computerScore++;
+    result = "You lose!";
   } else {
-    winner = "Computer";
+    result = "Draw!";
   }
 
-  alert(`Game over. Winner: ${winner}`);
+  label.textContent = `You chose ${humanChoice}, the computer chose ${computerChoice}. ${result}`;
 }
-playGame();
